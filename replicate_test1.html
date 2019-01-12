@@ -27,16 +27,25 @@
             padding:5px;
         }
         .border_sizing {
+            margin: 2px;
             border: white 8px solid;
+            box-sizing: border-box;
             height: 200px;
-            width: 300px;       
+            width: calc((100%/3) - 4px);       
 
         }
-        .space {
-            padding: 20px;
+        .searchbar {
+            border: 1px solid black;
+            background-color: white;
+            max-width: 400px;
+            min-width: 200px;
+            margin: 20px auto; 
         }
-        .morespace {
-            padding: 30px;
+        .images {
+            margin: auto;
+            font-size: 0;
+            min-width: 400px;
+            max-width: 956px;
         }
         </style>
     </head>
@@ -45,19 +54,17 @@
             <span id="Text">CreativeFolk</span>
             <span id="subtext">find talented people for your creative projects</span>
         </h1>
-        <div class="space"></div>
-        <div align="center">
+        <div class="searchbar" align="center">
             Searchbar
         </div>
-        <div class="space"></div>
-        <p>
+
+        <div class="images">
             <img src="https://images.unsplash.com/photo-1529528070131-eda9f3e90919?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80" class="border_sizing">
             <img src="https://images.unsplash.com/photo-1500322969630-a26ab6eb64cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" class="border_sizing">
             <img src="https://images.unsplash.com/photo-1476610182048-b716b8518aae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=827&q=80" class="border_sizing">
             <img src="https://images.unsplash.com/photo-1500485035595-cbe6f645feb1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" class="border_sizing">
             <img src="https://images.unsplash.com/photo-1526427158867-98ee4ba58d5a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" class="border_sizing">
-        <p>
-        <div class="morespace"></div>
+        </div>
         <footer>
         Filtering, Searching and Sorting
         </footer>
