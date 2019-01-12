@@ -1,0 +1,54 @@
+
+body {
+    margin: 0;
+    background-color:#cccccc;
+}
+h1 {
+    text-align:center;
+    background-color: #2f2f2f;
+    padding: 10px 0;
+    margin: 30px 0;  
+}
+.text {
+    font-family:Arial;
+    color:white;
+    padding:5px; 
+}
+.subtext {
+    font-family: segoe ui;
+    font-weight: 600;
+    font-size: 15px;
+    color: white;
+    padding: 6px 5px;
+    font-style: italic;
+}
+
+.image {
+    object-fit: cover;
+    margin: 2px;
+    border: white 8px solid;
+    box-sizing: border-box;
+    height: 200px;
+    width: calc((100%/3) - 4px);       
+
+}
+.searchbar {
+    text-align: center;
+    border: 1px solid black;
+    padding: 3px;
+    background-color: white;
+    max-width: 400px;
+    min-width: 200px;
+    margin: 40px auto; 
+}
+.images {
+    margin: 60px auto;
+    font-size: 0;
+    min-width: 400px;
+    max-width: 956px;
+}
+.footer {
+    font-size: 15px;
+    font-style: italic;
+    font-family: sans-serif;
+}
