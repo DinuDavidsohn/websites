@@ -1,0 +1,53 @@
+body {
+    background-color: #cccccc;
+    margin: 0;
+}
+.main_layer {
+    margin: 8px;
+    padding: 32px 64px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-image: url("images/main_image.jpg");
+}
+.header_text_left {
+    font-family: Arial;
+    text-align: left;
+    font-size: 16px;
+    display:inline;
+}
+.header_text_right {
+    font-family: Arial;
+    text-align: right;
+    font-size: 12px;
+    float: right;
+
+}
+.drop_down {
+    display:inline-block;
+    margin: 0 8px;
+}
+.main_core {
+    text-align: center;
+    height: 40px;
+    width: 220px;
+    margin: 128px auto 0 auto;
+}
+.pro_icon {
+    display: block;
+    border: 1px solid black;
+    width: 50px;
+    background-color: white;
+    float: right;
+}
+.mkit {
+    font-family: Arial;
+    text-align: center;
+    font-size: 32px;
+    float: left;
+    
+}
+.mkit_text {
+    font-family: Arial;
+    text-align: center;
+    font-size: 16px;
+}
