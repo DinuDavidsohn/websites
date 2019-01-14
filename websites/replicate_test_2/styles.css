@@ -1,6 +1,6 @@
 body {
     min-width: 550px;
-    background-color:white;
+    background-color: white;
     margin: 0;
 }
 .main_layer {
@@ -8,25 +8,26 @@ body {
     padding: 32px 64px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    background-image: url("images/main_image.jpg");
-    box-shadow: 0 0 8px;
+    background: url(images/main_image.jpg) bottom;
+    box-shadow: 0 0 32px;
 }
 .header_text_left {
     font-family: Arial;
     text-align: left;
     font-size: 16px;
-    display:inline;
+    display: inline;
+    color: white;
 }
 .header_text_right {
     font-family: Arial;
     text-align: right;
     font-size: 12px;
     float: right;
-
+    color: white;
 }
 .drop_down {
-    display:inline-block;
-    margin: 0 8px;
+    display: inline-block;
+    margin: 0 4px;
 }
 .main_core {
     text-align: center;
@@ -40,18 +41,21 @@ body {
     width: 50px;
     background-color: white;
     float: right;
+    box-shadow: 0 0 4px;
 }
 .mkit {
     font-family: Arial;
     text-align: center;
     font-size: 32px;
     float: left;
-    
+    color: white;
 }
 .mkit_text {
+    margin: 0 0 128px 0;
     font-family: Arial;
     text-align: center;
     font-size: 16px;
+    color: white;
 }
 .overlapping_layer {
     min-width: 400px;
@@ -60,9 +64,10 @@ body {
     margin: -48px 40px 40px 48px;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
-    box-shadow: 0px 0px 8px black;
+    box-shadow: 0px 0px 128px;
 }
 .description {
+    font-family: Arial;
     text-align: center;
     margin: 64px 0;
 }
@@ -81,16 +86,15 @@ body {
     max-width: 100px;
     max-height: 100px;
 }
-
 @media screen and (max-width: 650px) {
     .icons {
-        display:block;
+        display: block;
         margin: auto;
         width: 100%;    
     }
 }
-
 .caption {
     display: block;
+    font-family: Arial;
     font-size: 14px;    
 }
