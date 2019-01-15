@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    min-width:   400px;
+}
+.header {
+    margin: 0;
+    padding: 16px 0px;
+    background-color: #343a40;
+}
+.header_left {
+    margin: 0px 0px 0px 64px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: verdana;
+    display: inline-block;
+}
+.header_right {
+    float: right;
+    margin: 0px 64px 0px 0px;
+}
+.header_right_home {
+    margin: 0;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: verdana;
+    display: inline-block;
+}
+.header_right_options {
+    margin: 0 0 0 8px;
+    color: #949d9a;
+    font-size: 16px;
+    font-family: verdana;
+    display: inline-block;
+}
+.header_right_button {
+    display: none;   
+
+}
+.core {
+    margin: 32px 64px;
+    text-align: center;
+}
+.page_title {
+    margin: 16px 0px;
+    font-family: verdana;
+    font-size: 2em;
+    font-weight: 600;
+    text-align: left;
+}
+.subtext {
+    margin: 0px 16px;
+    font-size: .8em;
+    font-weight: lighter;
+}
+.bop_image {
+    margin-bottom: 32px;
+    float: left;
+    display: block;
+    object-fit: cover;
+    height: 300px;
+    width: 700px;
+}
+.bop_section {
+    float: right;
+    width: calc(98% - 700px);
+    text-align: left;
+}
+.bop_title {
+    font-family: verdana;
+    font-size: 1em;
+    font-weight: 500;
+}
+.bop_description {
+    margin: 8px 0;
+    font-family: verdana;
+}
+.view_more {
+    background-color: #007bff;
+    border-radius: 8px;
+    text-align: center;
+    font-family: verdana;
+    color: white;
+    width: fit-content;
+    padding: 8px;
+}
+.border {
+    margin-bottom: 32px;
+    clear: both;
+    border: 1px solid #e5e5e5;
+}
+@media screen and (max-width: 1040px) {
+    .core {
+        width: 80%
+    }
+    .bop_section {
+        margin-bottom: 32px;
+        clear: left;
+        width: 100%;
+    }
+    .header_right {
+        margin: -12px 64px 0 0;
+    }
+    .header_right_home {
+        display: none;
+    }
+    .header_right_options {
+        display: none;
+    }
+    .header_right_button {
+        display: block
+    }
+
+}
