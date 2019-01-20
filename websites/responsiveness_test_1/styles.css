@@ -57,6 +57,13 @@ body {
 }
 .section {
     display: block;
+
+}
+.section:nth-of-type(even) > .bop_image {
+    float: right;
+}
+.section:nth-of-type(even) > .bop_section {
+    float: left;
 }
 .bop_image {
     object-fit: cover;
@@ -65,6 +72,7 @@ body {
     max-width: 700px;
     margin-bottom: 32px;
 }
+
 .bop_section {
     float: right;
     text-align: left;
@@ -95,6 +103,7 @@ body {
     clear: both;
     border: 1px solid #e5e5e5;
 }
+
 @media screen and (max-width: 1040px) {
     .core {
         width: 80%
