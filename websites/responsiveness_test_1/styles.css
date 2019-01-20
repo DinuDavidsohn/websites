@@ -5,6 +5,9 @@ body {
 }
 .header {
     padding: 16px 0px;
+    position: fixed;
+    right: 0px;
+    left: 0px;
     text-align: left;
     background-color: #343a40;
 }
@@ -36,6 +39,18 @@ body {
 .header_right_button {
     display: none;   
 
+}
+.media_button {
+    background-color: #343a40;
+    position: relative;
+    top: 100px;
+    left: 0px;
+    height: 40px;
+    width: 40px;
+}
+.media_button_image {
+    width: 40px;
+    height: 40px
 }
 .core {
     margin: 0px;
