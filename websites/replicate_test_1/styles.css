@@ -32,7 +32,10 @@ h1 {
     width: calc((100%/3) - 4px);       
 
 }
-.searchbar {
+.search {
+    text-align:center;
+}
+#searchbar {
     text-align: center;
     border: 1px solid black;
     padding: 4px;
