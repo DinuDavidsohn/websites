@@ -35,7 +35,16 @@ body {
 }
 .header_right_button {
     display: none;   
-
+    border: 1px solid #007bff;
+    height: 40px;
+    width: 40px;
+    float: right;
+}
+.button_lines {
+    width: 40%;
+    border: .5px solid white;
+    display: none;
+    margin: 10px 12px 0 12px;
 }
 .core {
     margin: 0px;
@@ -63,7 +72,7 @@ body {
     width: 70%;
     float: left;
     max-width: 700px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }
 .bop_section {
     float: right;
@@ -91,7 +100,7 @@ body {
     margin-top: 24px;
 }
 .border {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     clear: both;
     border: 1px solid #e5e5e5;
 }
@@ -119,5 +128,7 @@ body {
     .header_right_button {
         display: block
     }
-
+    .button_lines {
+        display: block;
+    }
 }
