@@ -4,6 +4,20 @@
     a different background color. There is then space for a search bar. Then four images in-line with
     what looks to be a thin white border around each. Finally there is a footer, maybe not relevant-->
 
+
+    <!-- 
+        1) Add more images extend page
+        2) Convert Search Bar into an input
+        3) Write JS for the input st it filters the images when they type into the search bar
+
+        Draft one is to assign attributes to each image which, when called on by search, wil present
+        images only with those attributes
+
+        Draft two convert the input into a "select" and have all of the unique tags be selectable
+        and have any number of tags per image be supported
+
+        Draft three convert the select into an autocomplete
+    -->
     <head>
         <title>replicate_test1</title>
         <link href="styles.css" rel="stylesheet" type="text/css">
@@ -14,22 +28,21 @@
             <span class="text">CreativeFolk</span>
             <span class="subtext">find talented people for your creative projects</span>
         </h1>
-        <div class="searchbar">
-            Searchbar
+        <div class=search>
+            <input type="text" id="searchbar" onkeyup="get_landscape()" placeholder="List features...">
         </div>
-
         <div class="images">
-            <img src="./images/scenic_1.webp" class="image">
-            <img src="./images/scenic_2.webp" class="image">
-            <img src="./images/scenic_3.webp" class="image">
-            <img src="./images/scenic_4.webp" class="image">
-            <img src="./images/scenic_5.webp" class="image">
+            <img src="./images/scenic_1.webp" class="image" data-landscape="coast,easy,breezy">
+            <img src="./images/scenic_2.webp" class="image" data-landscape="temple,beautiful,cover">
+            <img src="./images/scenic_3.webp" class="image" data-landscape="tropical,boy">
+            <img src="./images/scenic_4.webp" class="image" data-landscape="mountains,dinu,likes">
+            <img src="./images/scenic_5.webp" class="image" data-landscape="waterfall,mangos,and,mangas">
 
         </div>
         <footer class="footer">
         Filtering, Searching and Sorting
         </footer>
-
+        <script src="scripts.js"></script>
     </body>
 </html>
 

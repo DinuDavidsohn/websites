@@ -5,6 +5,9 @@ body {
 }
 .header {
     padding: 16px 0px;
+    position: fixed;
+    right: 0px;
+    left: 0px;
     text-align: left;
     background-color: #343a40;
 }
@@ -46,6 +49,18 @@ body {
     display: none;
     margin: 10px 12px 0 12px;
 }
+.media_button {
+    background-color: #343a40;
+    position: relative;
+    top: 100px;
+    left: 0px;
+    height: 40px;
+    width: 40px;
+}
+.media_button_image {
+    width: 40px;
+    height: 40px
+}
 .core {
     margin: 0px;
     display: inline-block;
@@ -66,6 +81,13 @@ body {
 }
 .section {
     display: block;
+
+}
+.section:nth-of-type(even) > .bop_image {
+    float: right;
+}
+.section:nth-of-type(even) > .bop_section {
+    float: left;
 }
 .bop_image {
     object-fit: cover;
@@ -74,6 +96,7 @@ body {
     max-width: 700px;
     margin-bottom: 24px;
 }
+
 .bop_section {
     float: right;
     text-align: left;
@@ -104,6 +127,7 @@ body {
     clear: both;
     border: 1px solid #e5e5e5;
 }
+
 @media screen and (max-width: 1040px) {
     .core {
         width: 80%
