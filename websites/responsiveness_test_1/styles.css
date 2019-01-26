@@ -11,35 +11,64 @@ body {
     text-align: left;
     background-color: #343a40;
 }
-.header_left {
+.header > .header_left {
     margin: 0px 0px 0px 64px;
     color: #ffffff;
     font-size: 16px;
     font-family: verdana;
     display: inline-block;
 }
-.header_right {
+.header > .header_right {
     float: right;
     margin: 0px 64px 0px 0px;
+    font-size: 16px;
+    font-family: verdana;
 }
-.header_right_home {
+.header_right > .header_right_home {
     margin: 0;
     color: #ffffff;
-    font-size: 16px;
-    font-family: verdana;
     display: inline-block;
 }
-.header_right_options {
+.header_right_home:hover {
+    text-decoration: underline;
+}
+.header_right > .header_right_options {
     margin: 0 0 0 8px;
     color: #949d9a;
-    font-size: 16px;
-    font-family: verdana;
     display: inline-block;
 }
-.header_right_button {
-    display: none;   
-
+.header_right_options:hover {
+    text-decoration: underline;
 }
+.header_right > .header_right_button {
+    display: none;   
+    border: 1px solid #007bff;
+    height: 40px;
+    width: 40px;
+    float: right;
+}
+.button_dropdown {
+    display: none;
+    background-color: #343a40;
+    min-width: fit-content;
+    z-index: 1;
+}
+.header_right_button:hover .button_dropdown {
+    display: block;
+}
+.button_dropdown .dropdown_item {
+    color: white;
+    padding: 16px;
+    display: block;
+    border: 1px solid white;
+}
+.button_lines {
+    width: 40%;
+    border: .5px solid white;
+    display: none;
+    margin: 10px 12px 0 12px;
+}
+
 .media_button {
     background-color: #343a40;
     position: relative;
@@ -48,7 +77,7 @@ body {
     height: 40px;
     width: 40px;
 }
-.media_button_image {
+.media_button > .media_button_image {
     width: 40px;
     height: 40px
 }
@@ -57,22 +86,21 @@ body {
     display: inline-block;
     width: 80%;
 }
-.page_title {
-    margin: 16px 0px;
+.core > .page_title {
+    margin: 32px 0px 24px 0px;
     font-family: verdana;
     font-size: 2em;
     font-weight: 600;
     text-align: left;
 }
-.subtext {
+.page_title > .subtext {
     display: inline-block;
     margin: 0px 16px;
     font-size: .8em;
     font-weight: lighter;
 }
-.section {
+.core > .section {
     display: block;
-
 }
 .section:nth-of-type(even) > .bop_image {
     float: right;
@@ -80,68 +108,70 @@ body {
 .section:nth-of-type(even) > .bop_section {
     float: left;
 }
-.bop_image {
+.section > .bop_image {
     object-fit: cover;
     width: 70%;
     float: left;
     max-width: 700px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }
-
-.bop_section {
+.section > .bop_section {
     float: right;
+    font-family: verdana;
     text-align: left;
     width: 27%;
 }
-.bop_title {
-    font-family: verdana;
+.bop_section > .bop_title {   
     font-size: 1.5em;
     font-weight: 500;
 }
-.bop_description {
+.bop_section > .bop_description {
     margin: 8px 0;
-    font-family: verdana;
     line-height: 1.5;
 }
-.view_more {
+.bop_section > .view_more {
     background-color: #007bff;
     border-radius: 8px;
     text-align: center;
-    font-family: verdana;
     color: white;
     width: fit-content;
     padding: 8px 24px;
     margin-top: 24px;
 }
-.border {
-    margin-bottom: 32px;
+.view_more:hover {
+    border: solid #343a40 1px;
+    box-shadow: 0px 0px 32px #343a40;
+}
+.section > .border {
+    margin-bottom: 24px;
     clear: both;
     border: 1px solid #e5e5e5;
 }
-
 @media screen and (max-width: 1040px) {
     .core {
         width: 80%
     }
-    .bop_image {
+    .section > .bop_image {
         width: 100%;
     }
-    .bop_section {
+    .section > .bop_section {
         margin-bottom: 32px;
         clear: left;
         width: 100%;
     }
-    .header_right {
+    .header > .header_right {
         margin: -12px 64px 0 0;
     }
-    .header_right_home {
+    .header_right > .header_right_home {
         display: none;
     }
-    .header_right_options {
+    .header_right > .header_right_options {
         display: none;
     }
-    .header_right_button {
+    .header_right > .header_right_button {
         display: block
     }
-
+    .button_lines {
+        display: block;
+    }
 }

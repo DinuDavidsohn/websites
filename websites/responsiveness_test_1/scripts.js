@@ -6,7 +6,7 @@ window.onscroll = scrolling_button
 function scrolling_button() {
     button_offset = button.offsetTop;
     if (window.pageYOffset >= 38) {
-        var newOffset = window.pageYOffset + 62 
+        var newOffset = window.pageYOffset + 52 
         button.style.top = `${newOffset}px`
     }
     console.log(button_offset)
