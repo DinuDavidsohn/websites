@@ -30,14 +30,36 @@
         </h1>
         <div class=search>
             <input type="text" id="searchbar" onkeyup="get_landscape()" placeholder="List features...">
+            <select id="selectbar" onchange="select_landscape()">
+                <option value="none">Select trait</option>
+                <option value="cave">cave</option>
+                <option value="city">city</option>
+                <option value="coast">coast</option>
+                <option value="desert">desert</option>
+                <option value="forest">forest</option>
+                <option value="lake">lake</option>
+                <option value="mountains">mountains</option>
+                <option value="river">river</option>
+                <option value="temple">temple</option>
+                <option value="tropical">tropical</option>
+                <option value="waterfall">waterfall</option>
+            </select>
         </div>
         <div class="images">
-            <img src="./images/scenic_1.webp" class="image" data-landscape="coast,easy,breezy">
-            <img src="./images/scenic_2.webp" class="image" data-landscape="temple,beautiful,cover">
-            <img src="./images/scenic_3.webp" class="image" data-landscape="tropical,boy">
-            <img src="./images/scenic_4.webp" class="image" data-landscape="mountains,dinu,likes">
-            <img src="./images/scenic_5.webp" class="image" data-landscape="waterfall,mangos,and,mangas">
-
+            <img src="./images/scenic_1.webp" class="image" data-landscape="coast,mountains,city">
+            <img src="./images/scenic_2.webp" class="image" data-landscape="temple,forest,waterfall">
+            <img src="./images/scenic_3.webp" class="image" data-landscape="tropical,lake,forest">
+            <img src="./images/scenic_4.webp" class="image" data-landscape="mountains,forest">
+            <img src="./images/scenic_6.webp" class="image" data-landscape="desert,river,mountains">
+            <img src="./images/scenic_7.jpg" class="image" data-landscape="mountains">
+            <img src="./images/scenic_8.jpg" class="image" data-landscape="lake,mountains">
+            <img src="./images/scenic_9.jpg" class="image" data-landscape="desert,mountains">
+            <img src="./images/scenic_10.jpg" class="image" data-landscape="cave,lake">
+            <img src="./images/scenic_11.jpg" class="image" data-landscape="coast">
+            <img src="./images/scenic_12.jpg" class="image" data-landscape="lake,mountains">
+            <img src="./images/scenic_13.jpg" class="image" data-landscape="waterfall,mountains,forest">
+            <img src="./images/scenic_14.jpg" class="image" data-landscape="lake,mountains">
+            <img src="./images/scenic_15.jpg" class="image" data-landscape="lake,forest,mountains">
         </div>
         <footer class="footer">
         Filtering, Searching and Sorting

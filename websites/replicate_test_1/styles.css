@@ -44,6 +44,11 @@ h1 {
     min-width: 200px;
     margin: 40px auto; 
 }
+#selectbar {
+    padding: 4px;
+    border: 1px solid black;
+    text-transform: capitalize;
+}
 .images {
     margin: 64px auto;
     font-size: 0;
