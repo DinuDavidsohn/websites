@@ -48,6 +48,38 @@
         </select> <br>
         <input type="text" id="autocompletebar" onkeypress="autocomplete_search()" placeholder="Search features...">
     </div>
+    <!--
+        Carousel creation:
+        1)  import all of the images into the div and run a function that assigns a z-value in ascending order
+        2)  fix all the images wrt to the div and set all of their displays to none
+        3)  create left & right control buttons styled at the left and right sides of the image which control
+            the index values   
+    -->
+    <div class="carousel">
+        <div class="leftArrow" onclick="goLeft()">
+            <img src="images/leftArrow.png">
+        </div> 
+        <div class="rightArrow" onclick="goRight()">
+            <img src="images/rightArrow.png">
+        </div>
+        <div id="carouselImages">
+            <img src="./images/scenic_1.webp" data-landscape="coast,mountains,city">
+            <img src="./images/scenic_2.webp" data-landscape="temple,forest,waterfall">
+            <img src="./images/scenic_3.webp" data-landscape="tropical,lake,forest">
+            <img src="./images/scenic_4.webp" data-landscape="mountains,forest">
+            <img src="./images/scenic_5.webp" data-landscape="waterfall,mountains">
+            <img src="./images/scenic_6.webp" data-landscape="desert,river,mountains">
+            <img src="./images/scenic_7.jpg" data-landscape="mountains">
+            <img src="./images/scenic_8.jpg" data-landscape="lake,mountains">
+            <img src="./images/scenic_9.jpg" data-landscape="desert,mountains">
+            <img src="./images/scenic_10.jpg" data-landscape="cave,lake">
+            <img src="./images/scenic_11.jpg" data-landscape="coast">
+            <img src="./images/scenic_12.jpg" data-landscape="lake,mountains">
+            <img src="./images/scenic_13.jpg" data-landscape="waterfall,mountains,forest">
+            <img src="./images/scenic_14.jpg" data-landscape="lake,mountains">
+            <img src="./images/scenic_15.jpg" data-landscape="lake,forest,mountains">
+        </div>
+    </div>
     <div class="images">
         <img src="./images/scenic_1.webp" data-landscape="coast,mountains,city">
         <img src="./images/scenic_2.webp" data-landscape="temple,forest,waterfall">

@@ -34,7 +34,6 @@ h1 {
     box-sizing: border-box;
     height: 200px;
     width: calc((100%/3) - 4px);       
-
 }
 .search {
     text-align:center;
@@ -52,6 +51,36 @@ h1 {
     padding: 4px;
     border: 1px solid black;
     text-transform: capitalize;
+}
+.carousel {
+    height: 200px;
+    width: 400px;
+    margin: 32px auto;
+}
+.carousel > .leftArrow {
+    position: absolute;
+    z-index: 1;
+    margin-top: 100px;
+    width: 25px;
+}
+.carousel > .leftArrow > img {
+    width: 100%
+}
+.carousel > .rightArrow {
+    position: absolute;
+    z-index: 1;
+    margin-top: 100px;
+    width: 25px;
+    margin-left: 375px;
+}
+.carousel > .rightArrow > img {
+    width: 100%;
+}
+.carousel > #carouselImages > img {
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    object-fit: cover;
 }
 .footer {
     font-size: 14px;
