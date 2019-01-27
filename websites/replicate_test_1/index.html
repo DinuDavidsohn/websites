@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <!-- Webpage to be replicated has a header with two different texts, different fonts and 
+<!-- Webpage to be replicated has a header with two different texts, different fonts and 
     a different background color. There is then space for a search bar. Then four images in-line with
     what looks to be a thin white border around each. Finally there is a footer, maybe not relevant-->
 
 
-    <!-- 
+<!-- 
         1) Add more images extend page
         2) Convert Search Bar into an input
         3) Write JS for the input st it filters the images when they type into the search bar
@@ -18,54 +18,59 @@
 
         Draft three convert the select into an autocomplete
     -->
-    <head>
-        <title>replicate_test1</title>
-        <link href="styles.css" rel="stylesheet" type="text/css">
-        <meta charset="utf-8">
-    </head>
-    <body>
-        <h1>
-            <span class="text">CreativeFolk</span>
-            <span class="subtext">find talented people for your creative projects</span>
-        </h1>
-        <div class=search>
-            <input type="text" id="searchbar" onkeyup="get_landscape()" placeholder="List features...">
-            <select id="selectbar" onchange="select_landscape()">
-                <option value="none">Select trait</option>
-                <option value="cave">cave</option>
-                <option value="city">city</option>
-                <option value="coast">coast</option>
-                <option value="desert">desert</option>
-                <option value="forest">forest</option>
-                <option value="lake">lake</option>
-                <option value="mountains">mountains</option>
-                <option value="river">river</option>
-                <option value="temple">temple</option>
-                <option value="tropical">tropical</option>
-                <option value="waterfall">waterfall</option>
-            </select>
-        </div>
-        <div class="images">
-            <img src="./images/scenic_1.webp" class="image" data-landscape="coast,mountains,city">
-            <img src="./images/scenic_2.webp" class="image" data-landscape="temple,forest,waterfall">
-            <img src="./images/scenic_3.webp" class="image" data-landscape="tropical,lake,forest">
-            <img src="./images/scenic_4.webp" class="image" data-landscape="mountains,forest">
-            <img src="./images/scenic_6.webp" class="image" data-landscape="desert,river,mountains">
-            <img src="./images/scenic_7.jpg" class="image" data-landscape="mountains">
-            <img src="./images/scenic_8.jpg" class="image" data-landscape="lake,mountains">
-            <img src="./images/scenic_9.jpg" class="image" data-landscape="desert,mountains">
-            <img src="./images/scenic_10.jpg" class="image" data-landscape="cave,lake">
-            <img src="./images/scenic_11.jpg" class="image" data-landscape="coast">
-            <img src="./images/scenic_12.jpg" class="image" data-landscape="lake,mountains">
-            <img src="./images/scenic_13.jpg" class="image" data-landscape="waterfall,mountains,forest">
-            <img src="./images/scenic_14.jpg" class="image" data-landscape="lake,mountains">
-            <img src="./images/scenic_15.jpg" class="image" data-landscape="lake,forest,mountains">
-        </div>
-        <footer class="footer">
+
+<head>
+    <title>replicate_test1</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h1>
+        <span class="text">CreativeFolk</span>
+        <span class="subtext">find talented people for your creative projects</span>
+    </h1>
+    <div class=search>
+        <input type="text" id="searchbar" onkeyup="searchLandscapes()" placeholder="List features...">
+        <select id="selectbar" onchange="selectLandscapes()">
+            <option value="none">Select trait</option>
+            <option value="cave">cave</option>
+            <option value="city">city</option>
+            <option value="coast">coast</option>
+            <option value="desert">desert</option>
+            <option value="forest">forest</option>
+            <option value="lake">lake</option>
+            <option value="mountains">mountains</option>
+            <option value="river">river</option>
+            <option value="temple">temple</option>
+            <option value="tropical">tropical</option>
+            <option value="waterfall">waterfall</option>
+        </select> <br>
+        <input type="text" id="autocompletebar" onkeypress="autocomplete_search()" placeholder="Search features...">
+    </div>
+    <div class="images">
+        <img src="./images/scenic_1.webp" data-landscape="coast,mountains,city">
+        <img src="./images/scenic_2.webp" data-landscape="temple,forest,waterfall">
+        <img src="./images/scenic_3.webp" data-landscape="tropical,lake,forest">
+        <img src="./images/scenic_4.webp" data-landscape="mountains,forest">
+        <img src="./images/scenic_5.webp" data-landscape="waterfall,mountains">
+        <img src="./images/scenic_6.webp" data-landscape="desert,river,mountains">
+        <img src="./images/scenic_7.jpg" data-landscape="mountains">
+        <img src="./images/scenic_8.jpg" data-landscape="lake,mountains">
+        <img src="./images/scenic_9.jpg" data-landscape="desert,mountains">
+        <img src="./images/scenic_10.jpg" data-landscape="cave,lake">
+        <img src="./images/scenic_11.jpg" data-landscape="coast">
+        <img src="./images/scenic_12.jpg" data-landscape="lake,mountains">
+        <img src="./images/scenic_13.jpg" data-landscape="waterfall,mountains,forest">
+        <img src="./images/scenic_14.jpg" data-landscape="lake,mountains">
+        <img src="./images/scenic_15.jpg" data-landscape="lake,forest,mountains">
+    </div>
+    <footer class="footer">
         Filtering, Searching and Sorting
-        </footer>
-        <script src="scripts.js"></script>
-    </body>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+
 </html>
 
 

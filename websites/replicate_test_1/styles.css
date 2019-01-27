@@ -1,4 +1,3 @@
-
 body {
     margin: 0;
     background-color:#cccccc;
@@ -22,8 +21,13 @@ h1 {
     padding: 8px 4px;
     font-style: italic;
 }
-
-.image {
+.images {
+    margin: 64px auto;
+    font-size: 0;
+    min-width: 400px;
+    max-width: 956px;
+}
+.images > img {
     object-fit: cover;
     margin: 2px;
     border: white 8px solid;
@@ -48,12 +52,6 @@ h1 {
     padding: 4px;
     border: 1px solid black;
     text-transform: capitalize;
-}
-.images {
-    margin: 64px auto;
-    font-size: 0;
-    min-width: 400px;
-    max-width: 956px;
 }
 .footer {
     font-size: 14px;
