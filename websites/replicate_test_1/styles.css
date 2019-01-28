@@ -88,3 +88,67 @@ h1 {
     font-family: sans-serif;
     margin: 8px 0;
 }
+.game {
+    max-width: 80%;
+    min-width: 300px;
+    max-height: 50%;
+    min-height: 200px;
+    margin: auto;
+    border: 1px black solid;
+    background-color: rosybrown; 
+    font-family: Arial;
+}
+.game > .score {
+    text-align: right;
+    margin: 8px 8px 0 0;
+}
+.game > #gameStart {
+    text-align: center;
+}
+.game > .gameZone {
+    border: 1px black solid;
+    background-color: white; 
+    font-family: Arial;
+    font-weight: 500;
+    color: white;
+    margin: 32px auto;
+    width: fit-content;
+}
+.game > .gameZone > .rock {
+    padding: 24px;
+    background-color: red;
+    border: 1px black solid;
+    display: inline-block;     
+    margin: 16px;
+}
+.game > .gameZone > .rock:hover {
+    box-shadow: 0 0 32px #2f2f2f;
+    background: darkred;
+}
+.game > .gameZone > .paper {
+    padding: 24px;
+    background-color: blue;
+    border: 1px black solid;
+    display: inline-block;
+    margin: 16px;
+}
+.game > .gameZone > .paper:hover {
+    box-shadow: 0 0 32px #2f2f2f;
+    background-color: darkblue;
+}
+.game > .gameZone > .scissors {
+    padding: 24px;
+    background-color: green;
+    border: 1px black solid;
+    display: inline-block;
+    margin: 16px;
+}
+.game > .gameZone > .scissors:hover {
+    box-shadow: 0 0 32px #2f2f2f;
+    background-color: darkgreen;
+}
+.game > #outcome {
+    text-emphasis: bold;
+    text-align: center;
+    margin: 16px;
+}

@@ -97,6 +97,19 @@
         <img src="./images/scenic_14.jpg" data-landscape="lake,mountains">
         <img src="./images/scenic_15.jpg" data-landscape="lake,forest,mountains">
     </div>
+    <div class="game">
+        <div class="score">
+            <div id="timesPlayed">Times Played: 0</div>
+            <div id="timesWon">Times Won: 0</div>
+        </div>
+        <div id="gameStart">Choose Rock, Paper, or Scissors to win!</div>
+        <div class="gameZone">
+            <div class="rock" onclick="runGame('rock')">Rock</div>
+            <div class="paper" onclick="runGame('paper')">Paper</div>
+            <div class="scissors" onclick="runGame('scissors')">Scissors</div>
+        </div>
+        <div id="outcome"></div>
+    </div>
     <footer class="footer">
         Filtering, Searching and Sorting
     </footer>
