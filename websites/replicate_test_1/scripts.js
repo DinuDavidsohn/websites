@@ -130,7 +130,59 @@ function playedGameIncrement() {
 function wonGameIncrement() {
   gamesWon++
   document.getElementById("timesWon").innerHTML = "Times Won: " + gamesWon  
+}
 
+var gameState = [0,0,0,0,0,0,0,0,0]
+function pickBox(index) {
+  var pickedBox = document.getElementsByClassName("box")
+  if (winCheck(1) != -1 || winCheck(2) != -1 || gameState[index] != 0) {
+    return null
+  } 
+  pickedBox[index].style.backgroundColor = "red"
+  gameState[index] = 1
+  winner = winCheck(1)
+  if (winner != -1) {
+    return winner
+  }
+  var robotChoice = Math.floor((Math.random()*9))
+  while (gameState[robotChoice] != 0) {
+    robotChoice = Math.floor((Math.random()*9))
+  }
+  
+  pickedBox[robotChoice].style.backgroundColor = "blue"
+  gameState[robotChoice] = 2
+  winCheck(2)
 
+}
+function winCheck(i) {
+  /*row*/
+  for (j=0;j<gameState.length;j+=3) {
+    if (gameState[j] == i && gameState[j+1] == i && gameState[j+2] == i){
+      return winDialogue(i)
+    }
+  }
+  /*column*/
+  for (j=0;j<3;j+=1) {
+    if (gameState[j] == i && gameState[j+3] == i && gameState[j+6] == i){
+      return winDialogue(i)
+    }
+  }
+  /*Diagonals*/
+  for (j=0;j<3;j+=2) {
+    if (gameState[j] == i && gameState[j+4] == i && gameState[j+8] == i){
+      return winDialogue(i)
+    } else if (gameState[j] == i && gameState[j+2] == i && gameState[j+4] == i) {
+      return winDialogue(i)
+    }
+  }
+  return -1
+}
+function winDialogue(i) {
+  if (i == 1) {
+    document.getElementById("result").innerHTML = "You win the game!"
+  } else {
+    document.getElementById("result").innerHTML = "The CPU wins the game!"
+  }
+  return i
 }
 window.onload = startPosition();

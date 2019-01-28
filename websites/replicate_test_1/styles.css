@@ -152,3 +152,34 @@ h1 {
     text-align: center;
     margin: 16px;
 }
+.tictactoe {
+    max-width: 80%;
+    min-width: 300px;
+    max-height: 50%;
+    min-height: 200px;
+    margin: 50px auto;
+    border: 1px black solid;
+    background-color: rosybrown; 
+    font-family: Arial;
+}
+.tictactoe > .tictactitle  {
+    text-align: center;
+    font-weight: 1000;
+    margin: 16px;
+}
+.tictactoe > .board {
+    height: 300px;
+    width: 300px;
+    background-color: white; 
+    margin: 32px auto;
+    border: solid 1px black;
+    font-size: 0;
+}
+.tictactoe > .board > .box {
+    display: inline-block;
+    background-color: grey;
+    border: 1px black solid;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+}
