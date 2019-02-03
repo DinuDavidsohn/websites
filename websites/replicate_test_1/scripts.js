@@ -151,24 +151,26 @@ function runGame(index) {
 
 
 function hasGameFinished(index) {
-  var playerWon = findWinner(1)
-  var botWon = findWinner(2)
+  var playerWon = findWinner(1, gameState)
+  var botWon = findWinner(2, gameState)
 
   if (playerWon != -1) {
     return playerWon
   } else if (botWon != -1) {
     return botWon
-  } 
+  } else if (!remainingSpaces()) {
+    return 3
+  }
 }
 
 
 function makeMoves(index) {
-  var boxes = document.getElementsByClassName("box")
-
+  debugger
   if (gameState[index] != 0) {
     return null
   }
 
+  var boxes = document.getElementsByClassName("box")
   boxes[index].style.backgroundColor = "red"
   gameState[index] = 1
 
@@ -176,11 +178,12 @@ function makeMoves(index) {
   if (hasWinner) {
     return hasWinner
   }
-  
-  var robotChoice = getRobotChoice()
-  boxes[robotChoice].style.backgroundColor = "blue"
-  gameState[robotChoice] = 2
 
+  var robotChoice = getRobotChoice()
+  if (robotChoice != false) {
+    boxes[robotChoice].style.backgroundColor = "blue"
+    gameState[robotChoice] = 2
+  }
   hasWinner = hasGameFinished(index)
   if (hasWinner) {
     return hasWinner
@@ -189,39 +192,60 @@ function makeMoves(index) {
 
 
 function getRobotChoice() {
-
-  var robotChoice = Math.floor((Math.random() * 9))
-  while (gameState[robotChoice] != 0) {
-    robotChoice = Math.floor((Math.random() * 9))
+  var botChoice = winCheckForNextMove(2)
+  if (botChoice != false) {
+    return botChoice
   }
-  return robotChoice
-
+  botChoice = winCheckForNextMove(1)
+  if (botChoice != false) {
+    return botChoice
+  }
+  var botChoice = Math.floor((Math.random() * 9))
+  while (gameState[botChoice] != 0) {
+    botChoice = Math.floor((Math.random() * 9))
+  }
+  return botChoice
 }
 
-function findWinner(i) {
+function remainingSpaces() {
+  return (gameState.some(val => val == 0))
+}
+
+function winCheckForNextMove(player) {
+  for (i = 0; i < gameState.length; i++) {
+    if (gameState[i] == 0) {
+      plusGameState = gameState.slice()
+      plusGameState[i] = player
+      if (findWinner(player, plusGameState) != -1) {
+        return i
+      }
+    }
+  } 
+  return false
+}
+
+function findWinner(i, localGameState) {
   var winFound = false
   /*row*/
-  for (j = 0; j < gameState.length; j += 3) {
-    if (gameState[j] == i && gameState[j + 1] == i && gameState[j + 2] == i) {
+  for (j = 0; j < localGameState.length; j += 3) {
+    if (localGameState[j] == i && localGameState[j + 1] == i && localGameState[j + 2] == i) {
       winFound = true
     }
   }
   if (!winFound) {
     /*column*/
     for (j = 0; j < 3; j += 1) {
-      if (gameState[j] == i && gameState[j + 3] == i && gameState[j + 6] == i) {
+      if (localGameState[j] == i && localGameState[j + 3] == i && localGameState[j + 6] == i) {
         winFound = true
       }
     }
   }
   if (!winFound) {
     /*Diagonals*/
-    for (j = 0; j < 3; j += 2) {
-      if (gameState[j] == i && gameState[j + 4] == i && gameState[j + 8] == i) {
-        winFound = true
-      } else if (gameState[j] == i && gameState[j + 2] == i && gameState[j + 4] == i) {
-        winFound = true
-      }
+    if (localGameState[0] == i && localGameState[4] == i && localGameState[8] == i) {
+      winFound = true
+    } else if (localGameState[2] == i && localGameState[4] == i && localGameState[6] == i) {
+      winFound = true
     }
   }
   if (winFound) {
@@ -233,8 +257,10 @@ function findWinner(i) {
 function setWinDialogue(i) {
   if (i == 1) {
     document.getElementById("result").innerHTML = "You win the game!"
-  } else {
+  } else if (i == 2) {
     document.getElementById("result").innerHTML = "The CPU wins the game!"
+  } else {
+    document.getElementById("result").innerHTML = "Cat's cradle, it's a draw!"
   }
 }
 window.onload = startPosition();
