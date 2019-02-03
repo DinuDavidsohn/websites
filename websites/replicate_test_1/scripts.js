@@ -1,5 +1,5 @@
 function searchLandscapes() {
-  var input = document.getElementById("searchbar").value    
+  var input = document.getElementById("searchbar").value
   applyFilter(input)
 }
 
@@ -15,42 +15,42 @@ function autocomplete_search() {
 
 function startPosition() {
   var images = document.getElementById("carouselImages").children
-  for (i=0; i < images.length; i++) {
-      if (i != 0) {
-        images[i].style.display = "none"
-      }
+  for (i = 0; i < images.length; i++) {
+    if (i != 0) {
+      images[i].style.display = "none"
+    }
   }
 }
 
 function goRight() {
   var images = document.getElementById("carouselImages").children
   var counter = 0;
-  for (i=0; i<images.length; i++) {
+  for (i = 0; i < images.length; i++) {
     if (images[i].style.display != "none") {
       counter = i
     }
   }
   images[counter].style.display = "none"
-  if (counter == (images.length-1)) {
+  if (counter == (images.length - 1)) {
     images[0].style.display = "block"
   } else {
-    images[counter+1].style.display = "block"
+    images[counter + 1].style.display = "block"
   }
 }
 
 function goLeft() {
   var images = document.getElementById("carouselImages").children
   var counter = 0;
-  for (i=0; i<images.length; i++) {
+  for (i = 0; i < images.length; i++) {
     if (images[i].style.display != "none") {
       counter = i
     }
   }
   images[counter].style.display = "none"
   if (counter == 0) {
-    images[images.length-1].style.display = "block"
+    images[images.length - 1].style.display = "block"
   } else {
-    images[counter-1].style.display = "block"
+    images[counter - 1].style.display = "block"
   }
 }
 
@@ -82,21 +82,21 @@ function applyFilter(query) {
   }
 }
 function runGame(query) {
-  var robotChoice = Math.floor((Math.random()*3)+1)
+  var robotChoice = Math.floor((Math.random() * 3) + 1)
   console.log(robotChoice)
-  switch(robotChoice) {
+  switch (robotChoice) {
     case 1:
-    document.getElementById("gameStart").innerHTML = "The computer chooses Rock!"
-    break
+      document.getElementById("gameStart").innerHTML = "The computer chooses Rock!"
+      break
     case 2:
-    document.getElementById("gameStart").innerHTML = "The computer chooses Paper!"
-    break
+      document.getElementById("gameStart").innerHTML = "The computer chooses Paper!"
+      break
     case 3:
-    document.getElementById("gameStart").innerHTML = "The computer chooses Scissors!"
-    break
+      document.getElementById("gameStart").innerHTML = "The computer chooses Scissors!"
+      break
   }
-  switch(query) {
-    case "rock":  
+  switch (query) {
+    case "rock":
       query = 1
       break
     case "paper":
@@ -125,64 +125,116 @@ var gamesPlayed = 0
 var gamesWon = 0
 function playedGameIncrement() {
   gamesPlayed++
-  document.getElementById("timesPlayed").innerHTML = "Times Played: " + gamesPlayed  
+  document.getElementById("timesPlayed").innerHTML = "Times Played: " + gamesPlayed
 }
 function wonGameIncrement() {
   gamesWon++
-  document.getElementById("timesWon").innerHTML = "Times Won: " + gamesWon  
+  document.getElementById("timesWon").innerHTML = "Times Won: " + gamesWon
 }
 
-var gameState = [0,0,0,0,0,0,0,0,0]
-function pickBox(index) {
-  var pickedBox = document.getElementsByClassName("box")
-  if (winCheck(1) != -1 || winCheck(2) != -1 || gameState[index] != 0) {
-    return null
-  } 
-  pickedBox[index].style.backgroundColor = "red"
-  gameState[index] = 1
-  winner = winCheck(1)
-  if (winner != -1) {
-    return winner
+
+
+
+var gameState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+function runGame(index) {
+  var hasWinner = hasGameFinished(index)
+  if (hasWinner) {
+    return hasWinner
   }
-  var robotChoice = Math.floor((Math.random()*9))
-  while (gameState[robotChoice] != 0) {
-    robotChoice = Math.floor((Math.random()*9))
+
+  var updatedGameState = makeMoves(index)
+  if (updatedGameState != -1 && updatedGameState != null) {
+    setWinDialogue(updatedGameState)
+  }
+}
+
+
+function hasGameFinished(index) {
+  var playerWon = findWinner(1)
+  var botWon = findWinner(2)
+
+  if (playerWon != -1) {
+    return playerWon
+  } else if (botWon != -1) {
+    return botWon
+  } 
+}
+
+
+function makeMoves(index) {
+  var boxes = document.getElementsByClassName("box")
+
+  if (gameState[index] != 0) {
+    return null
+  }
+
+  boxes[index].style.backgroundColor = "red"
+  gameState[index] = 1
+
+  hasWinner = hasGameFinished(index)
+  if (hasWinner) {
+    return hasWinner
   }
   
-  pickedBox[robotChoice].style.backgroundColor = "blue"
+  var robotChoice = getRobotChoice()
+  boxes[robotChoice].style.backgroundColor = "blue"
   gameState[robotChoice] = 2
-  winCheck(2)
+
+  hasWinner = hasGameFinished(index)
+  if (hasWinner) {
+    return hasWinner
+  }
+}
+
+
+function getRobotChoice() {
+
+  var robotChoice = Math.floor((Math.random() * 9))
+  while (gameState[robotChoice] != 0) {
+    robotChoice = Math.floor((Math.random() * 9))
+  }
+  return robotChoice
 
 }
-function winCheck(i) {
+
+function findWinner(i) {
+  var winFound = false
   /*row*/
-  for (j=0;j<gameState.length;j+=3) {
-    if (gameState[j] == i && gameState[j+1] == i && gameState[j+2] == i){
-      return winDialogue(i)
+  for (j = 0; j < gameState.length; j += 3) {
+    if (gameState[j] == i && gameState[j + 1] == i && gameState[j + 2] == i) {
+      winFound = true
     }
   }
-  /*column*/
-  for (j=0;j<3;j+=1) {
-    if (gameState[j] == i && gameState[j+3] == i && gameState[j+6] == i){
-      return winDialogue(i)
+  if (!winFound) {
+    /*column*/
+    for (j = 0; j < 3; j += 1) {
+      if (gameState[j] == i && gameState[j + 3] == i && gameState[j + 6] == i) {
+        winFound = true
+      }
     }
   }
-  /*Diagonals*/
-  for (j=0;j<3;j+=2) {
-    if (gameState[j] == i && gameState[j+4] == i && gameState[j+8] == i){
-      return winDialogue(i)
-    } else if (gameState[j] == i && gameState[j+2] == i && gameState[j+4] == i) {
-      return winDialogue(i)
+  if (!winFound) {
+    /*Diagonals*/
+    for (j = 0; j < 3; j += 2) {
+      if (gameState[j] == i && gameState[j + 4] == i && gameState[j + 8] == i) {
+        winFound = true
+      } else if (gameState[j] == i && gameState[j + 2] == i && gameState[j + 4] == i) {
+        winFound = true
+      }
     }
   }
-  return -1
+  if (winFound) {
+    return i
+  } else {
+    return -1
+  }
 }
-function winDialogue(i) {
+function setWinDialogue(i) {
   if (i == 1) {
     document.getElementById("result").innerHTML = "You win the game!"
   } else {
     document.getElementById("result").innerHTML = "The CPU wins the game!"
   }
-  return i
 }
 window.onload = startPosition();
