@@ -161,9 +161,9 @@ h1 {
     border: 1px black solid;
     background-color: rosybrown; 
     font-family: Arial;
+    text-align: center
 }
 .tictactoe > .tictactitle  {
-    text-align: center;
     font-weight: 1000;
     margin: 16px;
 }
@@ -182,4 +182,8 @@ h1 {
     box-sizing: border-box;
     width: 100px;
     height: 100px;
+}
+.tictactoe > #result {     
+    font-weight: 1000;
+    margin: 16px;
 }

@@ -142,8 +142,11 @@ function runGame(index) {
   if (hasWinner) {
     return hasWinner
   }
-
-  var updatedGameState = makeMoves(index)
+  var updatedGameState = makeMove(index, 1)
+  if (updatedGameState != -1 && updatedGameState != null) {
+    setWinDialogue(updatedGameState)
+  }
+  updatedGameState = botsTurn()
   if (updatedGameState != -1 && updatedGameState != null) {
     setWinDialogue(updatedGameState)
   }
@@ -151,47 +154,43 @@ function runGame(index) {
 
 
 function hasGameFinished(index) {
-  var playerWon = findWinner(1, gameState)
-  var botWon = findWinner(2, gameState)
+  var playerOne = findWinner(1, gameState)
+  var playerTwo = findWinner(2, gameState)
 
-  if (playerWon != -1) {
-    return playerWon
-  } else if (botWon != -1) {
-    return botWon
+  if (playerOne != -1) {
+    return playerOne
+  } else if (playerTwo != -1) {
+    return playerTwo
   } else if (!remainingSpaces()) {
     return 3
   }
 }
 
-
-function makeMoves(index) {
-  debugger
+function makeMove(index, player) {
   if (gameState[index] != 0) {
     return null
   }
 
-  var boxes = document.getElementsByClassName("box")
-  boxes[index].style.backgroundColor = "red"
-  gameState[index] = 1
+  var board = document.getElementsByClassName("box")
+  board[index].style.backgroundColor = player == 1 ? "red" : "blue"
+  gameState[index] = player
 
-  hasWinner = hasGameFinished(index)
-  if (hasWinner) {
-    return hasWinner
-  }
-
-  var robotChoice = getRobotChoice()
-  if (robotChoice != false) {
-    boxes[robotChoice].style.backgroundColor = "blue"
-    gameState[robotChoice] = 2
-  }
   hasWinner = hasGameFinished(index)
   if (hasWinner) {
     return hasWinner
   }
 }
 
+function botsTurn() {
+  var robotChoice = getRobotChoice()
+  if (robotChoice !== false) {
+    return makeMove(robotChoice, 2)
+  }
+  else return robotChoice
+}
 
 function getRobotChoice() {
+  debugger
   var botChoice = winCheckForNextMove(2)
   if (botChoice != false) {
     return botChoice
@@ -200,16 +199,35 @@ function getRobotChoice() {
   if (botChoice != false) {
     return botChoice
   }
-  var botChoice = Math.floor((Math.random() * 9))
-  while (gameState[botChoice] != 0) {
-    botChoice = Math.floor((Math.random() * 9))
+  if (gameState[4] === 0) { return botChoice = 4 }
+  if (botChoice === false) {
+    botChoice = findPlayersFirstMove()
+    if (gameState[botChoice] != 0) { return botChoice = nextBestMove() }
   }
   return botChoice
 }
 
+
+function findPlayersFirstMove() {
+  if (gameState[0] === 1) { return 8 }
+  else if (gameState[1] === 1) { return 6 }
+  else if (gameState[2] === 1) { return 6 }
+  else if (gameState[3] === 1) { return 2 }
+  else if (gameState[5] === 1) { return 0 }
+  else if (gameState[6] === 1) { return 2 }
+  else if (gameState[7] === 1) { return 0 }
+  else if (gameState[8] === 1) { return 0 }
+}
+
+function nextBestMove() {
+  for (i = 0; i < gameState.length; i+=2) {
+    if (gameState[i] === 0) { return i }
+  }
+}
 function remainingSpaces() {
   return (gameState.some(val => val == 0))
 }
+
 
 function winCheckForNextMove(player) {
   for (i = 0; i < gameState.length; i++) {
@@ -220,9 +238,10 @@ function winCheckForNextMove(player) {
         return i
       }
     }
-  } 
+  }
   return false
 }
+
 
 function findWinner(i, localGameState) {
   var winFound = false
@@ -264,3 +283,4 @@ function setWinDialogue(i) {
   }
 }
 window.onload = startPosition();
+botsTurn()
