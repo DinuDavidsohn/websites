@@ -138,10 +138,15 @@ function wonGameIncrement() {
 var gameState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 function runGame(index) {
+  if (gameState[index] != 0) {
+    return null
+  }
+
   var hasWinner = hasGameFinished(index)
   if (hasWinner) {
     return hasWinner
   }
+
   var updatedGameState = makeMove(index, 1)
   if (updatedGameState != -1 && updatedGameState != null) {
     setWinDialogue(updatedGameState)
@@ -166,11 +171,8 @@ function hasGameFinished(index) {
   }
 }
 
-function makeMove(index, player) {
-  if (gameState[index] != 0) {
-    return null
-  }
 
+function makeMove(index, player) {
   var board = document.getElementsByClassName("box")
   board[index].style.backgroundColor = player == 1 ? "red" : "blue"
   gameState[index] = player
@@ -190,19 +192,20 @@ function botsTurn() {
 }
 
 function getRobotChoice() {
-  debugger
-  var botChoice = winCheckForNextMove(2)
+  var botChoice = winCheckForNextMove(2, gameState)
   if (botChoice != false) {
     return botChoice
   }
-  botChoice = winCheckForNextMove(1)
+  botChoice = winCheckForNextMove(1, gameState)
   if (botChoice != false) {
     return botChoice
   }
   if (gameState[4] === 0) { return botChoice = 4 }
   if (botChoice === false) {
     botChoice = findPlayersFirstMove()
-    if (gameState[botChoice] != 0) { return botChoice = nextBestMove() }
+    if (gameState[botChoice] != 0) {
+      return botChoice = botsNextBestMove()
+    }
   }
   return botChoice
 }
@@ -219,23 +222,51 @@ function findPlayersFirstMove() {
   else if (gameState[8] === 1) { return 0 }
 }
 
-function nextBestMove() {
-  for (i = 0; i < gameState.length; i+=2) {
-    if (gameState[i] === 0) { return i }
+
+function botsNextBestMove() {
+  var nextMove = false;
+  var winPossibilities = 0
+  for (i = 0; i < gameState.length; i++) {
+    if (gameState[i] == 0 && winPossibilities !== 2) {
+      plusGameState = gameState.slice()
+      plusGameState[i] = 2
+      var winPossibilities = 0
+      if (winCheckForNextMove(2, plusGameState)) {
+        winPossibilities++
+        nextMove = i
+        plusGameState[winCheckForNextMove(2, plusGameState)] = 1
+        if (winCheckForNextMove(2, plusGameState)) {
+          winPossibilities++
+        }
+      }
+      if (winPossibilities === 2) {
+        nextMove = i
+      }
+      else winPossibilities = 0
+    }
+  } if (nextMove === false) {
+    for (j = 0; j < gameState.length; j++) {
+      if (gameState[j] === 0) {
+        nextMove = j
+      }
+    }
   }
+  return nextMove
 }
+
+
 function remainingSpaces() {
   return (gameState.some(val => val == 0))
 }
 
 
-function winCheckForNextMove(player) {
-  for (i = 0; i < gameState.length; i++) {
-    if (gameState[i] == 0) {
-      plusGameState = gameState.slice()
-      plusGameState[i] = player
-      if (findWinner(player, plusGameState) != -1) {
-        return i
+function winCheckForNextMove(player, boardState) {
+  for (k = 0; k < boardState.length; k++) {
+    if (boardState[k] === 0) {
+      plusBoardState = boardState.slice()
+      plusBoardState[k] = player
+      if (findWinner(player, plusBoardState) != -1) {
+        return k
       }
     }
   }
