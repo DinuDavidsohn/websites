@@ -291,4 +291,3 @@ function getOptimizedOptions(gameState, myPieces, rivalPieces, options) {
   return options
 
 }
-
